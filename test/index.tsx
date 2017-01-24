@@ -24,7 +24,7 @@ describe(`InfinityAutoComplete Unit Testing`, function() {
         it(`should pass the data into the InfiniteAutocomplete core plugin`, function() {
             render(<InfinityAutoComplete data={[
                 {text: 'text', value: 'val'}
-            ]}/>, document.body);
+            ]}/>, document.body); 
             expect(InfiniteAutocomplete.prototype.setConfig)
                 .toHaveBeenCalled();
         });
