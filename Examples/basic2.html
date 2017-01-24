@@ -1,0 +1,32 @@
+<html>
+    <head></head>
+    <body>
+        <div id="root"></div>
+
+        <script src="../node_modules/react/dist/react.js"></script>
+        <script src="../node_modules/react-dom/dist/react-dom.js"></script>
+        <script src="../dist/index.debug.js"></script>
+        
+        <script>
+            ReactDOM.render(
+                React.createElement(InfinityAutoComplete, {
+                    getDataFromApi: function(text, page, fetchSize) {
+                        return new Promise(function(resolve, reject) {
+                            function reqListener () {
+                                resolve(JSON.parse(this.responseText));
+                            }
+                            var oReq = new XMLHttpRequest();
+                            oReq.addEventListener("load", reqListener);
+                            oReq.open("GET", "http://localhost:5000/data?text="+ text + "&page=" + page + "&fetchSize=" + fetchSize);
+                            oReq.send();
+                        });
+                    },
+                    onSelect: function(selectedElement, selectedData) {
+                        console.log(arguments);
+                    }
+                }, null),
+                document.getElementById('root')
+            );
+        </script>
+    </body>
+</html>
