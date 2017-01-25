@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { InfiniteAutocomplete } from 'infinite-autocomplete';
+import { IInfinityAutoCompleteParams } from './Interfaces/params';
+import { Promise as es6Promise } from 'es6-promise';
 
 /**
  * InfinityAutoComplete React Component
  * @extends React.Component
  * @author Islam Attrash
  */
-export class InfinityAutoComplete extends React.Component<any, any> {
+export class InfinityAutoComplete extends React.Component<IInfinityAutoCompleteParams, {}> {
 
     /**
      * Base element for the infinite-autocomplete
@@ -119,7 +121,9 @@ export class InfinityAutoComplete extends React.Component<any, any> {
         if(this.props.onSelect) {
             this.plugin.setConfig({
                 onSelect: (element, data) => {
-                    this.props.onSelect(element, data);
+                    if(this.props.onSelect) {
+                        this.props.onSelect(element, data);
+                    }
                 }
             });
         }
@@ -127,9 +131,13 @@ export class InfinityAutoComplete extends React.Component<any, any> {
         if(this.props.getDataFromApi) {
             this.plugin.setConfig({
                 getDataFromApi: (text, page, fetchSize) => {
-                    return this
+                    if(this.props.getDataFromApi) {
+                        return this
                                 .props
                                 .getDataFromApi(text, page, fetchSize);
+                    } else {
+                        return new es6Promise(resolve => resolve);
+                    }
                 }
             });
         }
