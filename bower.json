@@ -1,0 +1,12 @@
+{		
+	"name": "react-infinite-autocomplete",		
+	"description": "React.js infinite-autocomplete wrapper",		
+	"main": "./dist/index.js",		
+    "author": "Islam Attrash",
+	"license": "MIT",		
+	"homepage": "https://github.com/Attrash-Islam/bower-react-infinite-autocomplete.git",		
+	"repository": {		
+		"type": "git",		
+		"url": "git://github.com/Attrash-Islam/bower-react-infinite-autocomplete.git"		
+	}		
+}

@@ -1,6 +1,2 @@
-dist
-node_modules
 .history
 .vscode
-coverage
-npm-debug.log
